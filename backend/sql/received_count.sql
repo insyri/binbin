@@ -1,0 +1,1 @@
+SELECT * FROM VergilBus WHERE studentid = 1;

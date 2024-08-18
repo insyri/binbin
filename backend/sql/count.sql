@@ -1,0 +1,1 @@
+SELECT COUNT(studentid) FROM VergilBus;

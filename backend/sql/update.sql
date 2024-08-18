@@ -1,0 +1,1 @@
+UPDATE VergilBus SET pickup = true WHERE studenid = /*INSERT*/;
