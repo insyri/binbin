@@ -21,6 +21,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@fontsource/inter": "^5.0.20"
+		"@fontsource/inter": "^5.0.20",
+		"tesseract-wasm": "^0.10.0"
 	}
 }
