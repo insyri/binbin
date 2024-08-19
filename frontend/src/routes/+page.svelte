@@ -16,7 +16,7 @@
     <ul class="side">
       <li><a href="/guide"><button>FAQ / Guide</button></a></li>
       <li><a href="/credits"><button>Credits</button></a></li>
-      <li><a href="https://google.com/"><button>Feedback Form</button></a></li>
+      <li><a href="https://forms.gle/bNpZJft2Ui4Etrj98"><button>Feedback Form</button></a></li>
     </ul>
   </div>
 </section>

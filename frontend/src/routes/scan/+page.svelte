@@ -1,8 +1,8 @@
 <script>
   import { OCRClient } from "tesseract-wasm";
-  import tesseractWorker from "$lib/tesseract-worker?url";
-  import tesseractWasmBinary from "$lib/tesseract-core.wasm?raw";
-  import trainedData from "$lib/eng.traineddata?raw";
+  import workerURL from "$lib/tesseract-worker?url";
+  import tesseractWasmBinary from "$lib/tesseract-core.wasm?url";
+  import trainedData from "$lib/eng.traineddata?url";
   import { onDestroy, onMount } from "svelte";
   import Switch from "./Switch.svelte";
 
@@ -47,16 +47,24 @@
     imageCapture
       .grabFrame()
       .then(async (imageBitmap) => {
+        console.log(1)
+        let wasmBinary = await (await fetch(tesseractWasmBinary)).arrayBuffer();
+        console.log(1.1)
         const ocr = new OCRClient({
-          workerURL: tesseractWorker,
-          wasmBinary: tesseractWasmBinary,
+          workerURL,
+          wasmBinary,
         });
-        const data = trainedData;
-        await ocr.loadModel(data.arrayBuffer());
+        console.log(2)
+        const data = await fetch(trainedData).then( x => x.arrayBuffer());
+        console.log(3)
+        await ocr.loadModel(data);
+        console.log(4)
 
         await ocr.loadImage(imageBitmap);
+        console.log(5)
         const text = await ocr.getText();
 
+        console.log(6)
         console.log("OCR text: ", text);
 
         ///
