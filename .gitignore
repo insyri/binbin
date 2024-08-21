@@ -1,2 +1,6 @@
 frontend/node_modules
-frontend/.trash
+
+backend/node_modules
+lib
+
+.env

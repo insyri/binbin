@@ -8,3 +8,30 @@ Cypress Creek Computer Science and Engineering Club.
 - Sorting Algorithm Developer: [@tipsaw1](https://github.com/tipsaw1) Isaiah Lewis, of 2026
 
 > "We don't like Maria."
+
+## Development
+
+### Backend
+
+```bash
+cd backend
+npm i
+```
+
+Open two side-by-side terminals.
+
+1. ```bash
+   npm run compile # Initiates a compilation watch-- compiles TypeScript to JavaScript everytime you save.
+   ```
+
+2. ```bash
+   npm run dev # Initiates a run watch-- runs the JavaScript everytime it is updated.
+   ```
+
+### Frontend
+
+```bash
+cd frontend
+npm i
+npm run dev --
+```

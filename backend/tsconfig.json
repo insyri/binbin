@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "declaration": true,
+    "outDir": "./lib",
+    "lib": ["DOM"],
+    "esModuleInterop": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowUnreachableCode": false
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "sql"]
+}

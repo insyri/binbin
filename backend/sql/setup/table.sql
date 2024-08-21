@@ -1,1 +1,1 @@
-CREATE TABLE VergilBus (firstname varchar(255), lastname varchar(255), studentid varchar(255) NOT NULL, pickup bool, UNIQUE (studentid));
+CREATE TABLE VergilBus (firstname varchar(255), lastname varchar(255), studentid varchar(255) NOT NULL, pickup bool, PRIMARY KEY(studentid));

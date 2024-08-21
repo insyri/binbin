@@ -6,6 +6,8 @@
   import { onDestroy, onMount } from "svelte";
   import Switch from "./Switch.svelte";
 
+  let OCRout = "";
+
   /**
    * @type {number}
    */
@@ -47,27 +49,16 @@
     imageCapture
       .grabFrame()
       .then(async (imageBitmap) => {
-        console.log(1)
         let wasmBinary = await (await fetch(tesseractWasmBinary)).arrayBuffer();
-        console.log(1.1)
         const ocr = new OCRClient({
           workerURL,
           wasmBinary,
         });
-        console.log(2)
-        const data = await fetch(trainedData).then( x => x.arrayBuffer());
-        console.log(3)
+        const data = await fetch(trainedData).then((x) => x.arrayBuffer());
         await ocr.loadModel(data);
-        console.log(4)
-
         await ocr.loadImage(imageBitmap);
-        console.log(5)
-        const text = await ocr.getText();
+        OCRout = await ocr.getText();
 
-        console.log(6)
-        console.log("OCR text: ", text);
-
-        ///
         const canvas = document.getElementById("grabFrameCanvas");
         if (canvas) {
           drawCanvas(canvas, imageBitmap);
@@ -112,7 +103,8 @@
       startCountdown();
     } catch (e) {
       console.error(e);
-      errorMessage = "Camera Access Denied.";
+      errorMessage =
+        "Access to the camera was denied or unable to connect. Refresh the page once you've reconnected or give permissions to it.";
     }
   });
 
@@ -128,28 +120,42 @@
 
 <div class="text-column">
   <h1>Register New Student ID Cards</h1>
-  <h2>Make sure the camera is connected and allowed on your browser.</h2>
+  <p>Make sure the camera is connected and allowed on your browser.</p>
+  {#if errorMessage}
+    <p id="err">{errorMessage}</p>
+  {/if}
 
   <!-- svelte-ignore a11y-media-has-caption -->
   <video bind:this={videoEl} />
-  <Switch bind:isEnabled={scannerEnabled} on:toggle={handleToggle} />
-  {#if scannerEnabled}
-    <p>Next scan in {countdown}</p>
-    <canvas
-      id="grabFrameCanvas"
-      width="200"
-      height="100"
-      style="border:1px solid #000000;"
-    ></canvas>
-  {/if}
+  <br />
 
-  {#if errorMessage}
-    <h2>{errorMessage}</h2>
-  {/if}
+  <div>
+    <Switch bind:isEnabled={scannerEnabled} on:toggle={handleToggle} />
+    <div>
+      {#if scannerEnabled}
+        <p>Next scan in {countdown}</p>
+        <canvas
+          id="grabFrameCanvas"
+          width="200"
+          height="100"
+          style="border:1px solid #000000;"
+        ></canvas>
+      {/if}
+    </div>
+    <p>Text recognized:</p>
+    <textarea rows="4" cols="50">
+      {OCRout}
+    </textarea>
+  </div>
 </div>
 
 <style>
-  /* video {
-    background-color: gray;
-  } */
+  video {
+    min-height: 100px;
+    min-width: 100px;
+  }
+
+  #err {
+    color: --color-text-err;
+  }
 </style>
