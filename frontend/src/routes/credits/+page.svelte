@@ -12,24 +12,28 @@
     binbin was created by the Cypress Creek Computer Science and Engineering
     Club
   </h1>
-  <p>It was also created in a weekend.</p>
+  <p>It was also created in a week.</p>
 
   <ul>
     <li>Project Lead, UI Design:</li>
     <li>UI Design:</li>
     <li>Database Administration:</li>
+    <li>Sorting Algorithm Developer:</li>
+    <li>The Technologies of the Internet:</li>
   </ul>
   <ul>
     <li>Noah Mercedes, of 2025</li>
     <li>Princess St. Lot, of 2025</li>
     <li>Anabel Gomez-Torrez, of 2027</li>
+    <li>Isaiah Lewis, of 2026</li>
+    <li>The Internet</li>
   </ul>
   <p>Techstack:</p>
   <ul>
     <li>SvelteKit</li>
     <li>MariaDB</li>
     <li>DigitalOcean</li>
-    <li>OpenCV on WebAssembly</li>
+    <li>Google's Tesseract OCR Engine on WebAssembly</li>
   </ul>
   <p>
     See the source code on GitHub: <a href="https://github.com/insyri/binbin"
